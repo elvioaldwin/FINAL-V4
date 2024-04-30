@@ -108,7 +108,7 @@ def main():
     st.markdown("<hr style='border: 2px solid blue; border-radius: 5px;'/>", unsafe_allow_html=True)
     st.write("## Anggota Kelompok:")
     st.markdown("""
-    - **Elvio Aldwin Faqih** (235220521)
+    - **Elvio Aldwin Faqih** (2320521)
     - **Indana Zulfa** (2320531)
     - **Nayla Rahma** (2320540)
     - **Pramesthi Dewi Amelia** (2320543)
