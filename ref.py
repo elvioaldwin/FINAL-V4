@@ -122,7 +122,7 @@ def main():
     BMI Anda, tetapi juga memberikan penjelasan mendetail tentang kategori kesehatan yang sesuai dengan hasil pengukuran BMI Anda,
     saran olahraga yang cocok dalam bentuk tabel, serta kata-kata motivasi untuk membangun semangat Anda.
     """)
-    
+
     # Tabel BMI
     bmi_categories = {
         "Kategori": ["Underweight", "Normal", "Overweight", "Obese"],
@@ -130,22 +130,30 @@ def main():
     }
     st.table(bmi_categories)
 
-    # Input pengguna
+    # Input pengguna dan menu pilihan
     with st.sidebar:
         st.session_state['reminders'] = []
+        menu_options = ["Beranda", "Kalkulator BMI", "Pengingat Aktivitas", "Tracking Berat Badan"]
+        menu_choice = st.selectbox("Menu", menu_options)
+
+    if menu_choice == "Beranda":
+        st.write("Selamat datang di Aplikasi Kalkulator BMI!")
+    elif menu_choice == "Kalkulator BMI":
         name = st.text_input("Masukkan nama Anda:")
         weight = st.number_input("Masukkan berat Anda (dalam kg):", min_value=1.0, format="%.2f")
         height = st.number_input("Masukkan tinggi Anda (dalam cm):", min_value=1.0, format="%.2f")
-        if st.sidebar.button('Hitung BMI'):
+        if st.button('Hitung BMI'):
             if weight > 0 and height > 0:
                 bmi = calculate_bmi(weight, height)
                 display_bmi_info(bmi)
                 display_diet_suggestions(bmi)
             else:
                 st.error("Mohon masukkan data yang valid!")
-
-    display_reminder()
-    display_weight_tracking()
+    elif menu_choice == "Pengingat Aktivitas":
+        display_reminder()
+    elif menu_choice == "Tracking Berat Badan":
+        display_weight_tracking()
 
 if __name__ == '__main__':
     main()
+
